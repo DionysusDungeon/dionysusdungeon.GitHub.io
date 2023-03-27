@@ -1,0 +1,147 @@
+<html>
+
+<head>Dionysus' Dungeon</head>
+
+<body>
+
+</br></br>
+
+<canvas id = "mycanvas" width = "60px" height = "60px" style = "border:1px solid #000000;" ></canvas>
+
+</br></br>
+
+<!--	Administrator Controls	-->
+
+<h2>Administrator Controls:</h2>
+
+<button id = "CreateNewAccount"	>	Create New Account			</button>	</br>
+<button id = "CreateNewAdmin"	>	Create New Administrator	</button>	</br></br>
+
+<h2>Accounts:</h2>
+
+<table>
+
+<tr> <td> Account:			</td> <td id = "$name"		> Aphrodite				</td> <td> Current Points:	</td> <td id = "$points" > 100 </td> </tr>
+
+<tr> <td> Position:			</td> <td id = "$position"	> Submissive / Slave	</td> <td> Current Status:	</td> <td id = "$status" > Active </td> </tr>
+
+<tr> <td> Punishments:		</td> <td id = "$punishments" > Currently Obedient	</td> <td>
+
+<td>  <button onclick = "SetAvailable( 'Available'   )"	> Available		</button>
+<td>  <button onclick = "SetAvailable( 'Unavailable' )"	> Unavailable	</button>
+
+
+
+</td> </tr>
+
+</table>
+
+<p>
+
+<button onclick = IncPoints()		>	Add Points		</button>
+<button onclick = DecPoints() 		>	Remove Points	</button>
+<button onclick = AddPunishment()	>	Punish			</button>
+
+</p>
+
+</body>
+
+</html>
+
+<script>
+
+//Get canvas elements; ID and Context:
+var canvas	= document.getElementById("mycanvas");
+var context	= canvas.getContext("2d");
+
+//Get elements by ID:
+
+
+//Set constants, variables & arrays:
+const accounts = [];
+
+/**
+//Function of most importance:
+
+function StrapAlexToChair( rope ) {
+	
+	if ( rope == true ) { Alex.horniness *= 2; };
+	
+	Alex.whipWithLeatherBelt *= 8;
+	
+	if ( Alex.horniness >= 10 ) { Alex.wet = true; };
+	
+	while ( Alex.orgasm == false ) {
+		
+		Alex.fuckHardFromBehind; //Increases hornines by a factior of 2 with each thrust;
+		
+		if ( Alex.horniness > 50 ) { Alex.Choke = true; };
+		
+		if ( Alex.horniness > 100 ) { Alex.orgasm = true; };
+		
+		};
+	
+};
+**/
+
+//Create our functions:
+
+
+
+
+
+function SetAvailable( text )	{ document.getElementById( "$status" ).innerHTML = text; };
+
+function IncPoints() {
+	
+	let current_points	= document.getElementById( "$points" ).innerHTML;
+	let add_points		= prompt( "Please enter the amount in whole numbers:", 0 );
+	
+	let new_points = parseInt( current_points ) + parseInt( add_points );
+	
+	if ( isNaN( new_points ) ) return;
+	
+	document.getElementById( "$points" ).innerHTML = new_points;
+	
+};
+
+function DecPoints() {
+	
+	let current_points = document.getElementById( "$points" ).innerHTML;
+	
+	if ( parseInt( current_points ) == 0 ) { alert( "Cannot remove points: Points currently 0." ); return; };
+		
+	let dec_points = prompt( "Please enter the amount in whole numbers:", 0 );
+	
+	let new_points = parseInt( current_points ) - parseInt( dec_points );
+	
+	if ( isNaN( new_points ) ) return;
+	
+	if ( new_points < 0 ) { new_points = 0; };
+	
+	document.getElementById( "$points" ).innerHTML = new_points;
+	
+};
+
+//Account object constructor:
+function NewAccount( $admin ) {
+	
+	this.name		=	prompt("Account Holder's Name:");
+	this.admin		=	$admin
+	this.position	=	prompt("Account Holder's Position:");
+	this.points		=	prompt("Current Points:");
+	this.active		=	false;
+	
+	this.AddPoints	=	function() {};
+	this.SubPoints	=	function() {};
+	
+};
+
+
+
+
+//Draws a red square to test code is working!
+context.fillStyle = "red";
+context.fillRect( 10, 10, 40, 40 );
+
+</script>
